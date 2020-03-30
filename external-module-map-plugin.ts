@@ -9,7 +9,7 @@ import { Context } from "typedoc/dist/lib/converter/context";
 import { CommentPlugin } from "typedoc/dist/lib/converter/plugins/CommentPlugin";
 import { Comment } from "typedoc/dist/lib/models/comments";
 import { ContainerReflection } from "typedoc/dist/lib/models/reflections/container";
-import { Options, OptionsReadMode } from "typedoc/dist/lib/utils/options";
+import { Options } from "typedoc/dist/lib/utils/options";
 
 interface ModuleRename {
   renameTo: string;
@@ -65,7 +65,7 @@ export class ExternalModuleMapPlugin extends ConverterComponent {
    */
   private onBegin(context: Context) {
     this.moduleRenames = [];
-    this.options.read({}, OptionsReadMode.Prefetch);
+    this.options.read({});
     this.externalmap = (this.options.getValue('external-modulemap'));
     if (!!this.externalmap) {
       try {
